@@ -1,9 +1,9 @@
 import './Search.css';
 
-function Search() {
+function Search({ onChange }) {
   return (
     <div>
-      <input />
+      <input onKeyUpCapture={onChange} />
     </div>
   );
 }
