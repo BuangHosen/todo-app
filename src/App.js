@@ -10,7 +10,7 @@ function App() {
 
   const handleChange = useCallback(
     (event) => {
-      if (event.keyCode === 13) {
+      if (event.target.value && event.keyCode === 13) {
         event.preventDefault();
         setValue([...value, event.target.value]);
       }
