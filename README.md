@@ -4,7 +4,7 @@ This project is intended for someone want to learn React from beginning by apply
 
 Designed with Figma.
 
-### Intructions
+### Instructions
 
 1. Clone this repo.
 2. In the project directory, you can run npm start.
