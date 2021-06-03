@@ -6,16 +6,25 @@ import Search from './components/Search';
 import Results from './components/Results';
 
 function App() {
-  const [value, setValue] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const handleChange = useCallback(
     (event) => {
       if (event.target.value && event.keyCode === 13) {
         event.preventDefault();
-        setValue([...value, event.target.value]);
+        setTasks([...tasks, event.target.value]);
       }
     },
-    [value]
+    [tasks]
+  );
+
+  const handleRemove = useCallback(
+    (item) => {
+      const filteredTasks = tasks.filter((_, index) => index !== item);
+
+      setTasks(filteredTasks);
+    },
+    [tasks]
   );
 
   return (
@@ -24,7 +33,7 @@ function App() {
         By failing to <b>prepare</b>, you are preparing to fail
       </h1>
       <Search onChange={handleChange} />
-      <Results tasks={value} />
+      <Results tasks={tasks} onRemove={handleRemove} />
     </>
   );
 }

@@ -2,14 +2,14 @@ import { PencilIcon, TrashIcon } from '@heroicons/react/outline';
 
 import './Results.css';
 
-function Results({ tasks }) {
+function Results({ tasks, onRemove }) {
   return (
     <ul>
       {tasks.map((task, index) => (
-        <div className='row'>
-          <li key={index}>{task}</li>
+        <div key={index} className='row'>
+          <li>{task}</li>
           <div>
-            <TrashIcon className='icon-1' />
+            <TrashIcon className='icon-1' onClick={() => onRemove(index)} />
             <PencilIcon className='icon-2' />
           </div>
         </div>
