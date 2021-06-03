@@ -8,12 +8,9 @@ import Results from './components/Results';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const handleChange = useCallback(
-    (event) => {
-      if (event.target.value && event.keyCode === 13) {
-        event.preventDefault();
-        setTasks([...tasks, event.target.value]);
-      }
+  const handleSubmit = useCallback(
+    (value) => {
+      setTasks([...tasks, value]);
     },
     [tasks]
   );
@@ -27,13 +24,17 @@ function App() {
     [tasks]
   );
 
+  const handleUpdate = useCallback(() => {
+    console.log('sd');
+  }, []);
+
   return (
     <>
       <h1>
         By failing to <b>prepare</b>, you are preparing to fail
       </h1>
-      <Search onChange={handleChange} />
-      <Results tasks={tasks} onRemove={handleRemove} />
+      <Search onSubmit={handleSubmit} />
+      <Results tasks={tasks} onRemove={handleRemove} onUpdate={handleUpdate} />
     </>
   );
 }

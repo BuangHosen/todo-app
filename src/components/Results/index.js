@@ -2,7 +2,7 @@ import { PencilIcon, TrashIcon } from '@heroicons/react/outline';
 
 import './Results.css';
 
-function Results({ tasks, onRemove }) {
+function Results({ tasks, onRemove, onUpdate }) {
   return (
     <ul>
       {tasks.map((task, index) => (
@@ -10,7 +10,7 @@ function Results({ tasks, onRemove }) {
           <li>{task}</li>
           <div>
             <TrashIcon className='icon-1' onClick={() => onRemove(index)} />
-            <PencilIcon className='icon-2' />
+            <PencilIcon className='icon-2' onClick={onUpdate} />
           </div>
         </div>
       ))}

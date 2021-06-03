@@ -1,10 +1,29 @@
+import { useCallback, useState } from 'react';
+
 import './Search.css';
 
-function Search({ onChange }) {
+function Search({ onSubmit }) {
+  const [value, setValue] = useState('');
+
+  const handleChange = useCallback((event) => {
+    setValue(event.target.value);
+  }, []);
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (value) {
+        onSubmit(value);
+        setValue('');
+      }
+    },
+    [onSubmit, value]
+  );
+
   return (
-    <div>
-      <input onKeyUpCapture={onChange} />
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input onChange={handleChange} value={value} />
+    </form>
   );
 }
 
